@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, BigInteger, String, Boolean, ForeignKey, Enum, Table
+from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey, Enum, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 import enum
@@ -42,7 +42,7 @@ class Player(Base):
     __tablename__ = 'players'
 
     id = Column(Integer, primary_key=True)
-    telegram_id = Column(BigInteger, unique=True)
+    telegram_id = Column(Integer, unique=True)
     username = Column(String)
     game_id = Column(Integer, ForeignKey('games.id'))
     current_role = Column(Enum(Role), nullable=True)
@@ -59,7 +59,7 @@ class Game(Base):
     __tablename__ = 'games'
 
     id = Column(Integer, primary_key=True)
-    chat_id = Column(BigInteger, unique=True)  # ID чата Telegram, где идет игра
+    chat_id = Column(Integer, unique=True)  # ID чата Telegram, где идет игра
     status = Column(Enum(GameStatus), default=GameStatus.WAITING)
     current_phase = Column(Enum(GamePhase), nullable=True)
     night_count = Column(Integer, default=0)

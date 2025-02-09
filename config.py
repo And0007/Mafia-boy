@@ -13,9 +13,7 @@ DB_CONFIG = {
 }
 
 # Bot configuration
-TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-if not TOKEN:
-    raise ValueError("Telegram bot token not found in environment variables!")
+TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '7577686873:AAGVCVaAjJZFB-6H4ji-bSwPCSwwzMcmt_Q')
 
 # Game configuration
 MIN_PLAYERS = 4
@@ -27,3 +25,10 @@ VOTING_DURATION = 60  # seconds
 # Role settings
 MAFIA_RATIO = 3      # 1 mafia per 3 players
 LAWYER_MIN_PLAYERS = 8  # Lawyer appears with 8+ players
+
+# Game phases
+PHASE_WAITING = 'waiting'
+PHASE_NIGHT = 'night'
+PHASE_DAY = 'day'
+PHASE_VOTING = 'voting'
+PHASE_FINISHED = 'finished'
